@@ -30,7 +30,6 @@ const Footer = () => {
               <li><a href="#features" className="text-gray-300 hover:text-green-400 transition-colors">Features</a></li>
               <li><a href="#showcase" className="text-gray-300 hover:text-green-400 transition-colors">Technology</a></li>
               <li><a href="#demo" className="text-gray-300 hover:text-green-400 transition-colors">Demo</a></li>
-              <li><a href="#" className="text-gray-300 hover:text-green-400 transition-colors">Documentation</a></li>
             </ul>
           </div>
 
@@ -41,17 +40,20 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-green-400" />
                 <a href="mailto:contact@trackguard.ai" className="text-gray-300 hover:text-green-400 transition-colors">
-                  contact@trackguard.ai
+                   kdon27783@gmail.com
                 </a>
               </div>
               <div className="flex space-x-4 mt-4">
-                <a href="#" className="p-2 bg-gray-800 hover:bg-green-500 rounded-lg transition-all duration-300 transform hover:scale-110">
+                <a href="https://github.com/SaptarshiMondal123/fake"
+                  target="_blank"   
+                  rel="noopener noreferrer"
+                  className="p-2 bg-gray-800 hover:bg-green-500 rounded-lg transition-all duration-300 transform hover:scale-110">
                   <Github className="w-5 h-5 text-gray-300 hover:text-white" />
                 </a>
-                <a href="#" className="p-2 bg-gray-800 hover:bg-green-500 rounded-lg transition-all duration-300 transform hover:scale-110">
+                {/* <a href="#" className="p-2 bg-gray-800 hover:bg-green-500 rounded-lg transition-all duration-300 transform hover:scale-110">
                   <Linkedin className="w-5 h-5 text-gray-300 hover:text-white" />
-                </a>
-                <a href="#" className="p-2 bg-gray-800 hover:bg-green-500 rounded-lg transition-all duration-300 transform hover:scale-110">
+                </a> */}
+                <a href="https://fake-ruddy.vercel.app/" className="p-2 bg-gray-800 hover:bg-green-500 rounded-lg transition-all duration-300 transform hover:scale-110">
                   <ExternalLink className="w-5 h-5 text-gray-300 hover:text-white" />
                 </a>
               </div>

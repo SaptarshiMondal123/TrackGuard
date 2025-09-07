@@ -57,19 +57,19 @@ const Showcase = () => {
                   {item.description}
                 </p>
                 
-                <div className="flex items-center text-green-400 text-sm font-medium group-hover:text-green-300 transition-colors">
+                {/* <div className="flex items-center text-green-400 text-sm font-medium group-hover:text-green-300 transition-colors">
                   Learn more
                   <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
         </div>
 
         <div className="text-center mt-16">
-          <div className="inline-flex px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl font-bold text-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-500/25 cursor-pointer">
+          {/* <div className="inline-flex px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl font-bold text-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-green-500/25 cursor-pointer">
             Request Full Technical Demo
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
