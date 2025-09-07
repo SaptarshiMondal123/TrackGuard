@@ -29,12 +29,12 @@ const HeroSection = () => {
             </span>
           </h1>
           <div className="text-2xl md:text-4xl font-semibold text-white mb-4">
-            AI Train Pre-Collision Detection
+            Smarter trains. Safer journeys.
           </div>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            AI-powered hazard awareness for safer railways.
+             AI-powered pre-collision detection for railways.
             <span className="block text-lg text-green-400 mt-2 font-medium">
-              Safety Beyond Sight — Powered by AI
+              Protecting every journey, every track.
             </span>
           </p>
         </div>

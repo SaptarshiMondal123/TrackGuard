@@ -17,8 +17,10 @@ const Header = () => {
           <a href="#features" className="text-gray-300 hover:text-green-400 transition-colors">Features</a>
           <a href="#showcase" className="text-gray-300 hover:text-green-400 transition-colors">Showcase</a>
           <a href="#demo" className="text-gray-300 hover:text-green-400 transition-colors">Demo</a>
-          <button className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-2 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105">
-            Get Started
+          <button 
+          onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
+          className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-2 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105">
+            Upload Demo
           </button>
         </nav>
       </div>
