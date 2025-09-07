@@ -16,4 +16,4 @@ It uses YOLO for obstacle detection, CNN for track defect classification, and pr
 ---
 
 ## 🛠 Tech Stack
-Python, YOLOv8/YOLO11, OpenCV
+Python, React, NumPy, OpenCV, Pandas, Folium, CNN, FastAPI, COCO Dataset, Pandas3D, Roboflow, Shutil, Streamlit, TailWind CSS, Ultralytics, Vanilla HTML, YOLOv11, Akash SuperCloud
