@@ -1,4 +1,4 @@
-# 🚄 TrackGuard – AI Railway Safety System
+# 🚄 TrackGuard Railway Safety System
 
 ## 📌 Overview
 TrackGuard is an AI-powered system to detect **obstacles** and **track faults** in railway environments.  
@@ -16,4 +16,4 @@ It uses YOLO for obstacle detection, CNN for track defect classification, and pr
 ---
 
 ## 🛠 Tech Stack
-Python, YOLOv8/YOLO11, CNN, OpenCV, Streamlit, Google Maps API, Akash Supercloud
+Python, YOLOv8/YOLO11, OpenCV
