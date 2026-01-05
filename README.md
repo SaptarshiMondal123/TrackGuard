@@ -257,4 +257,4 @@ Backend currently allows all origins (`allow_origins=["*"]`). If you lock this d
 
 ## License
 
-No license file is included. If you plan to publish or distribute this project, add an appropriate license.
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
