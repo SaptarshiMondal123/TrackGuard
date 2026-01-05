@@ -1,0 +1,32 @@
+# --- Secrets / environment ---
+.env
+.env.*
+!.env.example
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# --- Runtime artifacts / generated files ---
+# Uploaded inputs and generated outputs
+uploads/
+outputs/
+output/
+
+# Optional: local notebooks / scratch
+*.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

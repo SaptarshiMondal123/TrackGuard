@@ -2,6 +2,7 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 import time, os, cv2, numpy as np, signal, shutil
+from pathlib import Path
 
 from panda3d.core import (
     loadPrcFileData, AmbientLight, DirectionalLight, Vec4, LineSegs,
@@ -19,7 +20,9 @@ loadPrcFileData("", "audio-library-name null")
 loadPrcFileData("", "win-size 1280 720")
 
 globalClock = ClockObject.getGlobalClock()
-VIDEO_PATH = "output/simulation.mp4"
+_BASE_DIR = Path(__file__).resolve().parent
+_OUT_DIR = _BASE_DIR / "output"
+VIDEO_PATH = str(_OUT_DIR / "simulation.mp4")
 router = APIRouter()
 
 class TrainSafetyDemo(ShowBase):
@@ -177,10 +180,10 @@ class TrainSafetyDemo(ShowBase):
         """Write frames to a temp AVI then compress with ffmpeg if present."""
         if not self.record or not self.frames:
             return
-        os.makedirs("output", exist_ok=True)
+        _OUT_DIR.mkdir(parents=True, exist_ok=True)
         h, w, _ = self.frames[0].shape
 
-        tmp_path = "output/tmp.avi"
+        tmp_path = str(_OUT_DIR / "tmp.avi")
         out = cv2.VideoWriter(tmp_path, cv2.VideoWriter_fourcc(*"XVID"), 30, (w, h))
         for f in self.frames:
             out.write(f)
@@ -198,7 +201,7 @@ class TrainSafetyDemo(ShowBase):
             self._log(f"🎥 Compressed video saved to {VIDEO_PATH}")
         else:
             # fallback: write MP4 using mp4v codec (less efficient)
-            fallback_path = "output/simulation_fallback.mp4"
+            fallback_path = str(_OUT_DIR / "simulation_fallback.mp4")
             out2 = cv2.VideoWriter(fallback_path, cv2.VideoWriter_fourcc(*"mp4v"), 30, (w, h))
             for f in self.frames:
                 out2.write(f)

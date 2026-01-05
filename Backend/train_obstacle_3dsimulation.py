@@ -2,6 +2,7 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 import time, os, cv2, numpy as np, signal, shutil
+from pathlib import Path
 from panda3d.core import (
     loadPrcFileData, AmbientLight, DirectionalLight, Vec4, LineSegs,
     ClockObject, CardMaker, NodePath, TextNode
@@ -17,7 +18,9 @@ loadPrcFileData("", "audio-library-name null")
 loadPrcFileData("", "win-size 1280 720")
 
 globalClock = ClockObject.getGlobalClock()
-VIDEO_PATH = "output/two_train_simulation.mp4"
+_BASE_DIR = Path(__file__).resolve().parent
+_OUT_DIR = _BASE_DIR / "output"
+VIDEO_PATH = str(_OUT_DIR / "two_train_simulation.mp4")
 router = APIRouter()
 
 class TwoTrainSafetyDemo(ShowBase):
@@ -167,20 +170,20 @@ class TwoTrainSafetyDemo(ShowBase):
     def _finalize_video(self):
         if not self.record or not self.frames:
             return
-        os.makedirs("output", exist_ok=True)
+        _OUT_DIR.mkdir(parents=True, exist_ok=True)
         h, w, _ = self.frames[0].shape
 
-        tmp_path = "output/tmp.avi"
+        tmp_path = str(_OUT_DIR / "tmp.avi")
         out = cv2.VideoWriter(tmp_path, cv2.VideoWriter_fourcc(*"XVID"), 30, (w, h))
         for f in self.frames:
             out.write(f)
         out.release()
 
         if shutil.which("ffmpeg"):
-            os.system(f'ffmpeg -y -i {tmp_path} -vcodec libx264 -crf 28 -preset fast {VIDEO_PATH}')
+            os.system(f'ffmpeg -y -i "{tmp_path}" -vcodec libx264 -crf 28 -preset fast "{VIDEO_PATH}"')
             os.remove(tmp_path)
         else:
-            os.rename(tmp_path, VIDEO_PATH)
+            os.replace(tmp_path, VIDEO_PATH)
 
 # ==== FastAPI App ====
 app = FastAPI()

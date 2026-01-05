@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import cv2
 import pandas as pd
@@ -13,7 +14,19 @@ CSV_OUT   = "alerts_track_fault.csv"
 MAP_OUT   = "track_fault_map.html"
 
 # ==== Load model once here ==== #
-MODEL = YOLO(r"C:\Users\SAPTARSHI MONDAL\SnakeGame\Model\track_fault_detection.pt")   # <-- put your trained model path here
+_BASE_DIR = Path(__file__).resolve().parent
+_DEFAULT_MODEL_PATH = _BASE_DIR / "Model" / "track_fault_detection.pt"
+_ENV_MODEL_PATH = (os.getenv("TRACKGUARD_TRACK_MODEL") or "").strip()
+_MODEL_PATH = Path(_ENV_MODEL_PATH) if _ENV_MODEL_PATH else _DEFAULT_MODEL_PATH
+
+if not _MODEL_PATH.exists():
+    raise FileNotFoundError(
+        f"Track fault weights not found at '{_MODEL_PATH}'. "
+        "Place the file at Backend/Model/track_fault_detection.pt, "
+        "or set TRACKGUARD_TRACK_MODEL to the weights file path."
+    )
+
+MODEL = YOLO(str(_MODEL_PATH))
 
 # ==== Risk scoring helpers ====
 def braking_distance_m(speed_kmph, reaction_time_s, decel_mps2):

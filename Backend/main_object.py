@@ -49,7 +49,7 @@ async def analyze_object(file: UploadFile, speed: float = Form(80.0)):
         shutil.copyfileobj(file.file, out_f)
 
     try:
-        results = await run_in_threadpool(run_inference, str(dest), float(speed), "cpu")
+        results = await run_in_threadpool(run_inference, str(dest), float(speed), "cpu", str(OUT_DIR))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Object inference error: {e}")
 

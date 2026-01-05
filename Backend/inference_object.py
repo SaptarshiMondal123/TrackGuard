@@ -12,8 +12,12 @@ import folium  # type: ignore
 from ultralytics import YOLO  # type: ignore
 
 # ---------------- CONFIG ----------------
-# Change the MODEL_PATH to your local yolov8 weights path
-MODEL_PATH = r"C:\Users\SAPTARSHI MONDAL\SnakeGame\Model\yolov8m-worldv2.pt"
+# Load weights from repo-local path by default.
+# You can override with the env var TRACKGUARD_OBJECT_MODEL.
+_BASE_DIR = Path(__file__).resolve().parent
+_DEFAULT_MODEL_PATH = _BASE_DIR / "Model" / "yolov8m-worldv2.pt"
+_ENV_MODEL_PATH = (os.getenv("TRACKGUARD_OBJECT_MODEL") or "").strip()
+MODEL_PATH = _ENV_MODEL_PATH or str(_DEFAULT_MODEL_PATH)
 
 # performance
 FRAME_SKIP = 2
@@ -54,6 +58,13 @@ def get_gps_from_route(frame_count):
 
 
 # load model once
+if not Path(MODEL_PATH).exists():
+    raise FileNotFoundError(
+        f"YOLO weights not found at '{MODEL_PATH}'. "
+        "Place the file at Backend/Model/yolov8m-worldv2.pt, "
+        "or set TRACKGUARD_OBJECT_MODEL to the weights file path."
+    )
+
 model = YOLO(MODEL_PATH)
 
 

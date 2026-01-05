@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+pydantic
+python-multipart
+pandas
+numpy
+opencv-python
+ultralytics
+folium
+
+# 3D/offscreen simulations
+panda3d
